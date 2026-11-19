@@ -1,0 +1,22 @@
+﻿ingredient_id,name_ko,group,naver_keywords,pubmed_query,noise_note
+PDRN,PDRN,train,PDRN|피디알엔|연어앰플|PDRN앰플|PDRN크림,"(polydeoxyribonucleotide[tiab] OR PDRN[tiab]) AND (skin[tiab] OR cosmetic*[tiab] OR dermal[tiab] OR wound[tiab])",시술(연어주사) 검색이 섞임. 시술 수요는 별도 그룹으로 분리 검토
+CICA,시카(병풀),train,시카|시카크림|병풀|병풀추출물|마데카소사이드,"(""Centella asiatica""[tiab] OR madecassoside[tiab] OR asiaticoside[tiab]) AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab])",'시카'는 다른 뜻(지명·이름)도 있어 노이즈 확인 필요
+NIACINAMIDE,나이아신아마이드,train,나이아신아마이드|나이아신아마이드세럼|나이아신아마이드앰플,"(niacinamide[tiab] OR nicotinamide[tiab]) AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab])",nicotinamide는 의약 연구(암·대사)가 많아 skin 필터 필수
+RETINOL,레티놀,train,레티놀|레티놀크림|레티놀세럼|레티날,"(retinol[tiab] OR retinal[tiab] OR retinaldehyde[tiab]) AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab])",retinal은 '망막' 뜻도 있어 skin 필터 필수
+EXOSOME,엑소좀,candidate,엑소좀앰플|엑소좀크림|엑소좀화장품|엑소좀세럼,"(exosome*[tiab] OR ""extracellular vesicle*""[tiab]) AND (skin[tiab] OR cosmetic*[tiab] OR dermal[tiab])",그냥 '엑소좀'은 시술 검색이 대부분이라 화장품 형태 키워드만 사용
+MICROBIOME,마이크로바이옴·발효,candidate,마이크로바이옴화장품|마이크로바이옴크림|프로바이오틱스크림|발효화장품|발효에센스,"(microbiome[tiab] OR probiotic*[tiab] OR postbiotic*[tiab]) AND skin[tiab] AND (cosmetic*[tiab] OR topical[tiab])",유산균 건강기능식품 검색과 섞이지 않게 화장품 형태로 한정
+PEPTIDE,펩타이드(바르는 보톡스),candidate,펩타이드앰플|펩타이드크림|펩타이드세럼|바르는보톡스|아르지렐린,"(""acetyl hexapeptide-8""[tiab] OR argireline[tiab] OR ""cosmetic peptide*""[tiab] OR ""signal peptide*""[tiab]) AND (skin[tiab] OR wrinkle*[tiab])",범위가 넓은 성분군이라 후속으로 세분화 검토
+EGCG,녹차(EGCG),candidate,녹차화장품|녹차세럼|녹차앰플|녹차토너|EGCG,"(epigallocatechin*[tiab] OR EGCG[tiab] OR ""green tea""[tiab]) AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab])",녹차 음료·건강 검색과 분리하려고 화장품 형태로 한정
+FUCOXANTHIN,푸코잔틴(미역·다시마),candidate,푸코잔틴크림|푸코잔틴앰플|푸코잔틴화장품|다시마화장품,"fucoxanthin[tiab] AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab] OR UV[tiab])",그냥 '푸코잔틴'은 다이어트 보조제 검색이 대부분
+RICE,쌀(K-곡물),candidate,쌀토너|쌀화장품|쌀세럼|라이스토너|쌀추출물,"(""rice bran""[tiab] OR ""rice ferment*""[tiab] OR ""Oryza sativa""[tiab]) AND (skin[tiab] OR cosmetic*[tiab])",특정 브랜드 제품명 영향이 클 수 있음
+PLANT_PDRN,식물성 PDRN,candidate,식물성PDRN|식물PDRN|비건PDRN|식물유래PDRN,"plant[tiab] AND (polydeoxyribonucleotide[tiab] OR PDRN[tiab])",검색량이 작아 0이 많이 나올 수 있음
+RECOMB_COLLAGEN,재조합 콜라겐,candidate,재조합콜라겐|재조합콜라겐앰플|인체유래콜라겐,"(""recombinant collagen""[tiab] OR ""recombinant human collagen""[tiab]) AND (skin[tiab] OR cosmetic*[tiab] OR wound[tiab])",먹는 콜라겐 검색과 분리 필요
+BAKUCHIOL,바쿠치올,candidate,바쿠치올|바쿠치올세럼|바쿠치올크림,"bakuchiol[tiab]",대부분 화장품 맥락이라 필터 없이 사용
+GLUTATHIONE,글루타치온,candidate,글루타치온앰플|글루타치온크림|글루타치온세럼,"glutathione[tiab] AND (""skin lightening""[tiab] OR whitening[tiab] OR melanin[tiab] OR cosmetic*[tiab])",먹는 글루타치온·주사 검색과 분리
+TRANEXAMIC,트라넥삼산,candidate,트라넥삼산|트라넥삼산세럼|트라넥삼산앰플,"""tranexamic acid""[tiab] AND (melasma[tiab] OR topical[tiab] OR cosmetic*[tiab])",먹는 약(기미 치료제) 검색이 섞임
+MUGWORT,쑥,candidate,쑥토너|쑥에센스|쑥마스크|쑥화장품,"(mugwort[tiab] OR ""Artemisia princeps""[tiab] OR ""Artemisia argyi""[tiab]) AND (skin[tiab] OR cosmetic*[tiab])",음식 '쑥' 검색과 분리하려고 화장품 형태로 한정
+HEARTLEAF,어성초,candidate,어성초|어성초토너|어성초패드|어성초크림,"""Houttuynia cordata""[tiab] AND (skin[tiab] OR cosmetic*[tiab] OR dermatitis[tiab])",어성초 차·탈모 샴푸 검색이 섞임
+SPICULE,스피큘,candidate,스피큘|스피큘앰플|마이크로니들앰플|니들앰플,"spicule*[tiab] AND (skin[tiab] OR transdermal[tiab] OR cosmetic*[tiab])",특정 브랜드 제품 영향이 큼
+ASTAXANTHIN,아스타잔틴,candidate,아스타잔틴크림|아스타잔틴앰플|아스타잔틴세럼,"astaxanthin[tiab] AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab])",먹는 아스타잔틴 검색과 분리
+CERAMIDE,세라마이드,candidate,세라마이드|세라마이드크림|세라마이드로션,"ceramide*[tiab] AND (skin[tiab] OR ""skin barrier""[tiab] OR cosmetic*[tiab])",이미 정착한 성분이라 비교 기준으로도 활용 가능
+HYALURONIC,히알루론산(앵커),anchor,히알루론산|히알루론산앰플|히알루론산세럼,"""hyaluronic acid""[tiab] AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab])",네이버 상대지수를 맞추는 기준 키워드. 검색량이 꾸준해서 앵커로 선택

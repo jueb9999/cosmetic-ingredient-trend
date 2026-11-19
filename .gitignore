@@ -1,0 +1,6 @@
+.env
+__pycache__/
+.venv/
+.ipynb_checkpoints/
+data/raw/pubmed_progress.csv
+.DS_Store
