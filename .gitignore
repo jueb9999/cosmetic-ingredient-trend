@@ -4,3 +4,4 @@ __pycache__/
 .ipynb_checkpoints/
 data/raw/pubmed_progress.csv
 .DS_Store
+config/keywords_backup.csv
