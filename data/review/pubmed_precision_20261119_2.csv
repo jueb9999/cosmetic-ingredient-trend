@@ -1,0 +1,9 @@
+﻿ingredient_id,checked,relevant_O,irrelevant_X,unsure,blank,precision,total_papers,verdict
+PDRN,20,19,1,0,0,0.95,87,양호
+RETINOL,20,17,3,0,0,0.85,418,양호
+PEPTIDE,20,17,3,0,0,0.85,112,양호
+FUCOXANTHIN,20,8,12,0,0,0.4,81,다듬기 필요
+BAKUCHIOL,20,19,1,0,0,0.95,70,양호
+GLUTATHIONE,20,11,9,0,0,0.55,365,다듬기 권장
+TRANEXAMIC,20,19,1,0,0,0.95,410,양호
+ASTAXANTHIN,20,8,12,0,0,0.4,265,다듬기 필요

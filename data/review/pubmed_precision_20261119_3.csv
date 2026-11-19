@@ -1,0 +1,4 @@
+﻿ingredient_id,checked,relevant_O,irrelevant_X,unsure,blank,precision,total_papers,verdict
+FUCOXANTHIN,20,18,2,0,0,0.9,39,양호
+GLUTATHIONE,20,17,3,0,0,0.85,192,양호
+ASTAXANTHIN,20,12,8,0,0,0.6,151,다듬기 권장

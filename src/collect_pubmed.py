@@ -2,7 +2,9 @@
 
 하는 일
 1. config/keywords.csv의 pubmed_query(검색식)를 읽는다.
-2. NCBI E-utilities의 esearch API로 '그 달에 출판된 논문 수'만 센다.
+2. NCBI E-utilities의 esearch API로 '그 달에 PubMed에 등록된 논문 수'만 센다.
+   (출판일 기준으로 세면 온라인 선공개일과 정식 출판일이 다른 논문이 두 달에 걸쳐
+    두 번 세어진다. 등록일(edat)은 논문마다 하나뿐이라 한 번만 세어진다)
    (논문 내용은 받지 않고 개수만 받아서 빠르고 가볍다)
 3. 성분 x 월 표를 data/raw/pubmed_<날짜>.csv로 저장한다.
    중간에 끊겨도 처음부터 다시 하지 않도록 진행 상황을 임시 파일에 계속 저장한다.
@@ -37,14 +39,14 @@ def month_range(start, end):
 
 
 def count_papers(query, period, api_key=None, email=None, retries=3):
-    """특정 달(period)에 출판된 논문 수를 센다."""
+    """특정 달(period)에 PubMed에 등록된 논문 수를 센다."""
     last_day = calendar.monthrange(period.year, period.month)[1]
     params = {
         "db": "pubmed",
         "term": query,
         "rettype": "count",
         "retmode": "json",
-        "datetype": "pdat",  # 출판일 기준
+        "datetype": "edat",  # PubMed 등록일 기준 (논문마다 하나라 중복 없음)
         "mindate": f"{period.year}/{period.month:02d}/01",
         "maxdate": f"{period.year}/{period.month:02d}/{last_day}",
         "tool": TOOL_NAME,
