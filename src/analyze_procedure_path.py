@@ -36,7 +36,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from common import RAW_DIR, ROOT, load_keywords
+from common import RAW_DIR, ROOT, load_keywords, use_korean_font
 
 PROCESSED = ROOT / "data" / "processed"
 PROCEDURE_INGS = ["PDRN", "EXOSOME", "SPICULE", "GLUTATHIONE", "PEPTIDE"]
@@ -146,6 +146,8 @@ def main():
 
 
 def plot(yr, on):
+    use_korean_font()
+    NAMES = {"PDRN": "PDRN", "EXOSOME": "엑소좀", "NIACINAMIDE": "나이아신아마이드"}
     ids = ["PDRN", "EXOSOME", "NIACINAMIDE"]
     fig, axes = plt.subplots(1, 3, figsize=(16, 4.8), sharey=True)
     for ax, ing in zip(axes, ids):
@@ -157,13 +159,13 @@ def plot(yr, on):
             g = g.reindex([str(y) for y in range(2016, 2026)], fill_value=0)
             ax.plot(g.index.astype(int), g / g.max(), marker="o", ms=3, color=COLOR[stage],
                     lw=2.4 if "검색" in stage else 1.6, ls="-" if "검색" in stage else "--",
-                    label=STAGE_EN[stage])
+                    label=stage)
         ax.axvspan(2024.5, 2025.5, color="grey", alpha=0.12)
-        ax.set_title(ing + (" (control: no procedure)" if ing == "NIACINAMIDE" else ""))
+        ax.set_title(NAMES.get(ing, ing) + (" (비교군: 시술 없음)" if ing == "NIACINAMIDE" else ""))
         ax.grid(alpha=0.3)
     axes[0].legend(loc="upper left", fontsize=8)
-    fig.suptitle("Yearly values scaled to each stage's max (solid = search, dashed = patents by applicant type; "
-                 "grey = patents incomplete)")
+    fig.suptitle("연도별 값 (단계별 최댓값 = 1). 실선 = 검색량, 점선 = 출원인 유형별 특허, "
+                 "회색 = 특허가 덜 공개된 기간")
     fig.tight_layout()
     out = PROCESSED / "w4_procedure_path.png"
     fig.savefig(out, dpi=120)

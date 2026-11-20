@@ -160,6 +160,8 @@ def main():
     parser.add_argument("--only", nargs="*", help="특정 성분만 (예: --only PDRN CICA)")
     parser.add_argument("--start", default="2010-01", help="월별 집계 시작 월")
     parser.add_argument("--dry-run", action="store_true", help="검색어별 특허 수와 필요한 호출 수만 출력")
+    parser.add_argument("--scan", action="store_true",
+                        help="7주차 새 후보(config/scan_keywords.csv) -> kipris_scan_<날짜>.csv (기존 파일을 덮어쓰지 않음)")
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
@@ -167,7 +169,11 @@ def main():
     if not key:
         raise SystemExit(".env에 KIPRIS_API_KEY가 없습니다.")
 
-    kw = pd.read_csv(ROOT / "config" / "keywords.csv", encoding="utf-8-sig", dtype=str, keep_default_na=False)
+    kw_file = "scan_keywords.csv" if args.scan else "keywords.csv"
+    kw = pd.read_csv(ROOT / "config" / kw_file, encoding="utf-8-sig", dtype=str, keep_default_na=False)
+    if args.scan:
+        kw = kw[kw["kipris_keywords"] != ""]
+    name = "kipris_scan" if args.scan else "kipris"
     if args.only:
         need = set(args.only) | ({"PDRN"} if "PLANT_PDRN" in args.only else set())
         kw = kw[kw["ingredient_id"].isin(need)]
@@ -222,7 +228,7 @@ def main():
     items["is_cosmetic_ipc"] = items["ipcNumber"].map(is_cosmetic)
     items["month"] = pd.to_datetime(items["applicationDate"], format="%Y%m%d", errors="coerce").dt.to_period("M")
 
-    items_path = raw_path("kipris_items")
+    items_path = raw_path(f"{name}_items")
     items.drop(columns="month").to_csv(items_path, index=False, encoding="utf-8-sig")
 
     # 월별 출원 수 (특허가 없는 달은 0)
@@ -235,7 +241,7 @@ def main():
                 out.append({"ingredient_id": ing, "stage": "patent", "source": source,
                             "month": str(p), "value": int(counts.get((ing, p), 0)), "value_type": "count"})
     out = pd.DataFrame(out)
-    csv_path = raw_path("kipris")
+    csv_path = raw_path(name)
     out.to_csv(csv_path, index=False, encoding="utf-8-sig")
 
     summary = items.groupby("ingredient_id", sort=False).agg(

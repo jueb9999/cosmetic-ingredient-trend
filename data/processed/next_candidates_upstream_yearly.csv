@@ -1,0 +1,137 @@
+﻿ingredient_id,name,kind,year,value,complete
+PDRN,PDRN (비교),논문,2010,0.0,True
+PDRN,PDRN (비교),논문,2011,0.0,True
+PDRN,PDRN (비교),논문,2012,0.0,True
+PDRN,PDRN (비교),논문,2013,0.0,True
+PDRN,PDRN (비교),논문,2014,0.0,True
+PDRN,PDRN (비교),논문,2015,2.0,True
+PDRN,PDRN (비교),논문,2016,5.0,True
+PDRN,PDRN (비교),논문,2017,3.0,True
+PDRN,PDRN (비교),논문,2018,4.0,True
+PDRN,PDRN (비교),논문,2019,2.0,True
+PDRN,PDRN (비교),논문,2020,3.0,True
+PDRN,PDRN (비교),논문,2021,2.0,True
+PDRN,PDRN (비교),논문,2022,3.0,True
+PDRN,PDRN (비교),논문,2023,7.0,True
+PDRN,PDRN (비교),논문,2024,7.0,True
+PDRN,PDRN (비교),논문,2025,21.0,True
+PDRN,PDRN (비교),논문,2026,26.0,False
+AZELAIC,아젤라산,논문,2010,0.0,True
+AZELAIC,아젤라산,논문,2011,0.0,True
+AZELAIC,아젤라산,논문,2012,0.0,True
+AZELAIC,아젤라산,논문,2013,0.0,True
+AZELAIC,아젤라산,논문,2014,0.0,True
+AZELAIC,아젤라산,논문,2015,24.0,True
+AZELAIC,아젤라산,논문,2016,25.0,True
+AZELAIC,아젤라산,논문,2017,14.0,True
+AZELAIC,아젤라산,논문,2018,16.0,True
+AZELAIC,아젤라산,논문,2019,15.0,True
+AZELAIC,아젤라산,논문,2020,20.0,True
+AZELAIC,아젤라산,논문,2021,24.0,True
+AZELAIC,아젤라산,논문,2022,25.0,True
+AZELAIC,아젤라산,논문,2023,19.0,True
+AZELAIC,아젤라산,논문,2024,38.0,True
+AZELAIC,아젤라산,논문,2025,29.0,True
+AZELAIC,아젤라산,논문,2026,36.0,False
+NAD,NAD·NMN,논문,2010,0.0,True
+NAD,NAD·NMN,논문,2011,0.0,True
+NAD,NAD·NMN,논문,2012,0.0,True
+NAD,NAD·NMN,논문,2013,0.0,True
+NAD,NAD·NMN,논문,2014,0.0,True
+NAD,NAD·NMN,논문,2015,20.0,True
+NAD,NAD·NMN,논문,2016,31.0,True
+NAD,NAD·NMN,논문,2017,31.0,True
+NAD,NAD·NMN,논문,2018,29.0,True
+NAD,NAD·NMN,논문,2019,33.0,True
+NAD,NAD·NMN,논문,2020,34.0,True
+NAD,NAD·NMN,논문,2021,62.0,True
+NAD,NAD·NMN,논문,2022,49.0,True
+NAD,NAD·NMN,논문,2023,45.0,True
+NAD,NAD·NMN,논문,2024,46.0,True
+NAD,NAD·NMN,논문,2025,76.0,True
+NAD,NAD·NMN,논문,2026,95.0,False
+ECM,ECM,논문,2010,0.0,True
+ECM,ECM,논문,2011,0.0,True
+ECM,ECM,논문,2012,0.0,True
+ECM,ECM,논문,2013,0.0,True
+ECM,ECM,논문,2014,0.0,True
+ECM,ECM,논문,2015,46.0,True
+ECM,ECM,논문,2016,47.0,True
+ECM,ECM,논문,2017,44.0,True
+ECM,ECM,논문,2018,49.0,True
+ECM,ECM,논문,2019,58.0,True
+ECM,ECM,논문,2020,85.0,True
+ECM,ECM,논문,2021,78.0,True
+ECM,ECM,논문,2022,96.0,True
+ECM,ECM,논문,2023,78.0,True
+ECM,ECM,논문,2024,109.0,True
+ECM,ECM,논문,2025,157.0,True
+ECM,ECM,논문,2026,230.0,False
+PDRN,PDRN (비교),화장품 특허,2010,0.0,True
+PDRN,PDRN (비교),화장품 특허,2011,0.0,True
+PDRN,PDRN (비교),화장품 특허,2012,0.0,True
+PDRN,PDRN (비교),화장품 특허,2013,0.0,True
+PDRN,PDRN (비교),화장품 특허,2014,0.0,True
+PDRN,PDRN (비교),화장품 특허,2015,1.0,True
+PDRN,PDRN (비교),화장품 특허,2016,5.0,True
+PDRN,PDRN (비교),화장품 특허,2017,0.0,True
+PDRN,PDRN (비교),화장품 특허,2018,6.0,True
+PDRN,PDRN (비교),화장품 특허,2019,2.0,True
+PDRN,PDRN (비교),화장품 특허,2020,5.0,True
+PDRN,PDRN (비교),화장품 특허,2021,6.0,True
+PDRN,PDRN (비교),화장품 특허,2022,7.0,True
+PDRN,PDRN (비교),화장품 특허,2023,20.0,True
+PDRN,PDRN (비교),화장품 특허,2024,35.0,True
+PDRN,PDRN (비교),화장품 특허,2025,45.0,False
+PDRN,PDRN (비교),화장품 특허,2026,8.0,False
+AZELAIC,아젤라산,화장품 특허,2010,1.0,True
+AZELAIC,아젤라산,화장품 특허,2011,1.0,True
+AZELAIC,아젤라산,화장품 특허,2012,0.0,True
+AZELAIC,아젤라산,화장품 특허,2013,2.0,True
+AZELAIC,아젤라산,화장품 특허,2014,1.0,True
+AZELAIC,아젤라산,화장품 특허,2015,0.0,True
+AZELAIC,아젤라산,화장품 특허,2016,0.0,True
+AZELAIC,아젤라산,화장품 특허,2017,1.0,True
+AZELAIC,아젤라산,화장품 특허,2018,2.0,True
+AZELAIC,아젤라산,화장품 특허,2019,0.0,True
+AZELAIC,아젤라산,화장품 특허,2020,0.0,True
+AZELAIC,아젤라산,화장품 특허,2021,4.0,True
+AZELAIC,아젤라산,화장품 특허,2022,2.0,True
+AZELAIC,아젤라산,화장품 특허,2023,0.0,True
+AZELAIC,아젤라산,화장품 특허,2024,3.0,True
+AZELAIC,아젤라산,화장품 특허,2025,8.0,False
+AZELAIC,아젤라산,화장품 특허,2026,0.0,False
+NAD,NAD·NMN,화장품 특허,2010,0.0,True
+NAD,NAD·NMN,화장품 특허,2011,0.0,True
+NAD,NAD·NMN,화장품 특허,2012,0.0,True
+NAD,NAD·NMN,화장품 특허,2013,0.0,True
+NAD,NAD·NMN,화장품 특허,2014,0.0,True
+NAD,NAD·NMN,화장품 특허,2015,0.0,True
+NAD,NAD·NMN,화장품 특허,2016,1.0,True
+NAD,NAD·NMN,화장품 특허,2017,0.0,True
+NAD,NAD·NMN,화장품 특허,2018,3.0,True
+NAD,NAD·NMN,화장품 특허,2019,2.0,True
+NAD,NAD·NMN,화장품 특허,2020,2.0,True
+NAD,NAD·NMN,화장품 특허,2021,2.0,True
+NAD,NAD·NMN,화장품 특허,2022,4.0,True
+NAD,NAD·NMN,화장품 특허,2023,7.0,True
+NAD,NAD·NMN,화장품 특허,2024,8.0,True
+NAD,NAD·NMN,화장품 특허,2025,7.0,False
+NAD,NAD·NMN,화장품 특허,2026,10.0,False
+ECM,ECM,화장품 특허,2010,0.0,True
+ECM,ECM,화장품 특허,2011,0.0,True
+ECM,ECM,화장품 특허,2012,1.0,True
+ECM,ECM,화장품 특허,2013,0.0,True
+ECM,ECM,화장품 특허,2014,1.0,True
+ECM,ECM,화장품 특허,2015,2.0,True
+ECM,ECM,화장품 특허,2016,0.0,True
+ECM,ECM,화장품 특허,2017,2.0,True
+ECM,ECM,화장품 특허,2018,0.0,True
+ECM,ECM,화장품 특허,2019,0.0,True
+ECM,ECM,화장품 특허,2020,1.0,True
+ECM,ECM,화장품 특허,2021,0.0,True
+ECM,ECM,화장품 특허,2022,1.0,True
+ECM,ECM,화장품 특허,2023,5.0,True
+ECM,ECM,화장품 특허,2024,1.0,True
+ECM,ECM,화장품 특허,2025,1.0,False
+ECM,ECM,화장품 특허,2026,0.0,False

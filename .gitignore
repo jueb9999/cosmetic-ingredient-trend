@@ -9,3 +9,4 @@ data/raw/kipris_cache/
 data/raw/kipris_items_*.csv
 data/review/kipris_review_*.csv
 .venv314/
+data/raw/kipris_scan_items_*.csv

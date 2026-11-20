@@ -1,6 +1,8 @@
 # 선행지표 기반 화장품 성분 트렌드 예측
 
 PDRN이 유행하기 전에 어떤 데이터가 먼저 움직였는지 찾고, 같은 신호를 보이는 다음 후보 성분을 찾는 프로젝트입니다.
+
+**최종 보고서: [docs/final_report.md](docs/final_report.md)** · 대시보드: `streamlit run app.py`
 ## 진행 상황
 
 | 주차 | 내용 | 상태 |
@@ -12,7 +14,7 @@ PDRN이 유행하기 전에 어떤 데이터가 먼저 움직였는지 찾고, �
 | 5주차 | 후보 성분 점수화, 과거 시점 백테스트 | 완료 |
 | 6주차 | 원료 사업 진입 가능성 검토 | 완료 |
 | 7주차 | 'PDRN 다음' 새 후보 탐색, Streamlit 대시보드 | 완료 |
-| 8주차 | 최종 보고서 | 예정 |
+| 8주차 | 새 후보 논문·특허 수집, 그래프 한국어화, 최종 보고서 | 완료 |
 
 ## 폴더 구조
 
@@ -23,6 +25,7 @@ cosmetic-ingredient-trend/
 ├── config/applicant_types.csv  # 특허 출원인 유형 (원료사·ODM·브랜드사 등, 사람이 분류)
 ├── config/feasibility_notes.csv  # 성분별 규제·수급·기술·근거 정성 평가와 출처
 ├── app.py                   # Streamlit 대시보드 (streamlit run app.py)
+├── docs/final_report.md     # 최종 보고서
 ├── config/scan_keywords.csv  # 7주차 새 후보 검색어 (화장품·시술)
 ├── src/
 │   ├── common.py            # 공통 함수
@@ -129,7 +132,9 @@ python src/assess_feasibility.py               # -> feasibility.csv, w6_feasibil
 
 ```bash
 python src/collect_naver.py --scan --end 2026-10-31   # 새 후보 검색량 (요청 3~4번)
-python src/scan_next.py                               # -> next_candidates.csv, w7_next_candidates.png
+python src/collect_pubmed.py --scan --end 2026-10      # 새 후보 논문 수 -> pubmed_scan_<날짜>.csv
+python src/collect_kipris.py --scan                   # 새 후보 특허 (약 15회 호출) -> kipris_scan_<날짜>.csv
+python src/scan_next.py                               # -> next_candidates.csv, next_candidates_upstream.csv, w7·w8 그래프
 streamlit run app.py                                  # 브라우저에서 대시보드 열기 (API 키 필요 없음)
 ```
 
@@ -307,6 +312,22 @@ PDRN 화장품 검색(히알루론산 평균 = 100 기준)은 2020~2022년에 10
 
 ### 대시보드
 `streamlit run app.py`로 열면 탭 6개에서 결과를 볼 수 있습니다: 한눈에 보기, 성분 추이(성분·지표 선택, 이동평균 조절), 시차 분석, 점수·백테스트, 원료 사업 진입(성분별 근거와 출처), PDRN 다음 후보.
+
+
+## 8주차 결과: 새 후보의 논문·특허
+
+7주차 새 후보 중 신호가 있던 세 성분의 논문(PubMed)과 특허(KIPRIS)를 같은 방법으로 모았습니다(`config/scan_keywords.csv`의 `pubmed_query`, `kipris_keywords`). 기존 파일을 덮어쓰지 않도록 `--scan` 옵션으로 `*_scan_<날짜>.csv`에 따로 저장합니다.
+
+| 성분 | 논문 (연간) | 화장품 특허 (연간) | 해석 |
+|---|---|---|---|
+| NAD·NMN | 2024년 46편 → 2026년 95편 이상(10월까지) | 2018~22년 연 2~4건 → 2023년 이후 7~10건 | 논문·특허·검색·시술이 모두 오르는 유일한 성분 |
+| 아젤라산 | 연 20~38편으로 거의 일정 | 연 0~8건 | 오래된 성분. 연구는 그대로인데 소비자 관심만 다시 오름 |
+| ECM | 2023년 78편 → 2026년 230편 이상 | 연 0~5건 | 연구와 시술(리투오)이 앞서고 화장품은 아직 |
+| (PDRN, 뜨기 직전 2020~22년) | 연 2~3편 | 연 5~7건 | 소비자 관심이 먼저 터지고 논문·특허는 뒤따름 |
+
+- 특허 검색어 정확도는 표본 10건으로 확인했습니다. 아젤라산·NAD는 약 8/10이었습니다. ECM은 "추출물이 세포외기질을 늘린다"처럼 효과 설명으로만 쓰인 특허가 많아(약 3~4/10), 제목에 세포외기질·ECM이 있거나 탈세포·무세포 가공을 다루는 특허만 셌습니다(84건 → 16건).
+- 모든 그래프(`data/processed/w*.png`)와 대시보드의 글자를 한국어로 바꿨습니다(`common.use_korean_font`, 맑은 고딕).
+- 전체 결론과 원료 사업 제안은 [최종 보고서](docs/final_report.md)에 정리했습니다.
 
 ## 알아둘 한계
 - 네이버 검색량은 절대 검색 수가 아니라 상대지수입니다. 앵커로 맞춰도 앵커보다 훨씬 작은 성분은 소수점 단위 오차가 커집니다.

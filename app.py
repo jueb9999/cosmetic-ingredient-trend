@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent
 P = ROOT / "data" / "processed"
 RAW = ROOT / "data" / "raw"
 
-TITLE = "선행지표 기반 화장품 성분 트렌드 예측과 원료 사업 진입 전략"
+TITLE = "선행지표 기반 화장품 성분 트렌드 예측"
 # 기본 검증 팔레트 (순서 고정, 순환하지 않음)
 PALETTE = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"]
 GRAY, INK2, GRID = "#8a8984", "#52514e", "#e4e3df"
@@ -320,9 +320,35 @@ with tabs[5]:
     l.altair_chart(left_chart, width="stretch")
     r.altair_chart(right_chart, width="stretch")
 
+    st.subheader("새 후보 3개의 논문·특허는?")
+    st.markdown("PDRN은 소비자 관심이 먼저 터지고 논문·특허가 뒤따랐어요(뜨기 직전 2020~2022년 논문 연 2~3편, 화장품 특허 연 5~7건). "
+                "새 후보 세 개는 위쪽 신호의 모양이 서로 달라요.")
+    up = load_csv("next_candidates_upstream_yearly.csv")
+    up = up[up.year.between(2015, 2026)].assign(연도=lambda x: pd.to_datetime(x.year.astype(str)),
+                                                 상태=lambda x: np.where(x.complete, "완성", "덜 모임"))
+    names_up = ["PDRN (비교)", "아젤라산", "NAD·NMN", "ECM"]
+    up_chart = alt.Chart(up).mark_line(point=True, strokeWidth=2).encode(
+        x=alt.X("연도:T", title=None, axis=alt.Axis(format="%Y", tickCount="year")),
+        y=alt.Y("value:Q", title=None),
+        color=alt.Color("name:N", title=None, scale=alt.Scale(domain=names_up, range=[GRAY] + PALETTE[:3]),
+                        legend=alt.Legend(orient="top")),
+        tooltip=[alt.Tooltip("name:N", title="성분"), alt.Tooltip("year:Q", title="연도"),
+                 alt.Tooltip("value:Q", title="건수"), alt.Tooltip("상태:N")],
+    ).properties(height=220).facet(column=alt.Column("kind:N", title=None, sort=["논문", "화장품 특허"])).resolve_scale(y="independent")
+    st.altair_chart(up_chart, width="stretch")
+    st.caption("논문 2026년은 10월까지, 특허는 출원 후 18개월 뒤 공개되어 2024년 하반기부터는 덜 공개된 값이에요. "
+               "ECM 특허는 세포외기질을 원료로 쓰는 특허(제목에 세포외기질·ECM, 또는 탈세포·무세포 가공)만 셌어요.")
+    st.markdown("""
+| 성분 | 논문 | 화장품 특허 | 해석 |
+|---|---|---|---|
+| NAD·NMN | 2024년 46편 → 2026년 95편 이상 | 연 2~4건 → 7~10건 | 논문·특허·검색·시술이 **모두** 오르는 유일한 성분 |
+| 아젤라산 | 연 20~38편으로 거의 일정 | 연 0~8건 | 오래된 성분. 연구는 그대로인데 소비자 관심만 다시 오름 |
+| ECM | 2023년 78편 → 2026년 230편 이상 | 연 0~5건 | 연구는 급증하는데 화장품 특허는 아직 거의 없음. 시술(리투오)이 앞서는 단계 |
+""")
+
     flt = st.radio("표 보기", ["새 후보만", "전체"], horizontal=True)
     v = nc[nc.new_candidate] if flt == "새 후보만" else nc
-    v = v.assign(procedure=v.procedure.map(PROC_KO))
+    v = v.assign(procedure=v.procedure.map(PROC_KO).fillna(v.procedure))
     st.dataframe(v[["name_ko", "judgement", "level", "growth", "steady", "from_peak", "peak_month", "procedure", "proc_growth"]]
                  .rename(columns={"name_ko": "성분", "judgement": "판정", "level": "검색 수준", "growth": "1년 증가율",
                                   "steady": "꾸준함", "from_peak": "정점 대비", "peak_month": "정점 시기",

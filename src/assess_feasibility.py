@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from common import ROOT
+from common import ROOT, use_korean_font
 
 PROCESSED = ROOT / "data" / "processed"
 ITEMS = sorted((ROOT / "data" / "raw").glob("kipris_items_*.csv"))[-1]
@@ -146,27 +146,28 @@ def main():
 
 
 def plot(d):
+    use_korean_font()
     fig, ax = plt.subplots(figsize=(8, 6.5))
     fig.patch.set_facecolor("#fcfcfb")
     ax.set_facecolor("#fcfcfb")
     ax.axvline(0.5, color=GRID, lw=1.2)
     ax.axhline(0.5, color=GRID, lw=1.2)
-    for x, y, t in [(0.98, 0.98, "Priority"), (0.02, 0.98, "Attractive but hard to enter"),
-                    (0.98, 0.02, "Easy but less attractive"), (0.02, 0.02, "Hold")]:
+    for x, y, t in [(0.98, 0.98, "우선 검토"), (0.02, 0.98, "매력 있지만 진입 어려움"),
+                    (0.98, 0.02, "쉽지만 매력 낮음"), (0.02, 0.02, "보류")]:
         ax.text(x, y, t, transform=ax.transAxes, ha="right" if x > 0.5 else "left",
                 va="top" if y > 0.5 else "bottom", fontsize=8.5, color=INK2, style="italic")
     for _, r in d.iterrows():
         bench = r.quadrant == "비교 기준"
         ax.scatter(r.ease, r.attractiveness, s=60 + r.patents * 1.5, color=GRAY if bench else BLUE,
                    edgecolor="#fcfcfb", linewidth=2, zorder=3)
-        ax.annotate(r.ingredient_id + (" (benchmark)" if bench else ""), (r.ease, r.attractiveness),
+        ax.annotate(r.name_ko + (" (비교 기준)" if bench else ""), (r.ease, r.attractiveness),
                     xytext=OFFSET.get(r.ingredient_id, (8, 6)), textcoords="offset points", fontsize=8.5,
                     color=INK, ha="right" if r.ingredient_id in OFFSET else "left")
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.set_xlabel("Ease of entry (patent competition, regulation, supply, tech barrier)", fontsize=8.5, color=INK2)
-    ax.set_ylabel("Market attractiveness (W5 score, search growth, evidence)", fontsize=8.5, color=INK2)
-    ax.set_title("Raw-material entry feasibility  (bubble size = cosmetic patents 2021-01~2025-04)",
+    ax.set_xlabel("진입 용이성 (특허 경쟁, 규제, 원료 수급, 기술 장벽)", fontsize=8.5, color=INK2)
+    ax.set_ylabel("시장 매력도 (5주차 점수, 검색 증가율, 효능 근거)", fontsize=8.5, color=INK2)
+    ax.set_title("원료 사업 진입 가능성 (원 크기 = 2021-01~2025-04 화장품 특허 수)",
                  fontsize=10, color=INK, loc="left")
     for s in ["top", "right"]:
         ax.spines[s].set_visible(False)

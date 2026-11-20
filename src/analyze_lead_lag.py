@@ -56,12 +56,12 @@ try:
 except ImportError:  # Python 3.14용 설치 파일이 아직 없음
     rpt = None
 
-from common import ROOT, load_keywords
+from common import ROOT, load_keywords, use_korean_font
 
 PROCESSED = ROOT / "data" / "processed"
 SOURCES = ["pubmed", "kipris_cosmetic", "naver"]
 PAIRS = [("pubmed", "naver"), ("kipris_cosmetic", "naver"), ("pubmed", "kipris_cosmetic")]
-LABEL = {"pubmed": "Papers", "kipris_cosmetic": "Cosmetic patents", "naver": "Search"}
+LABEL = {"pubmed": "논문", "kipris_cosmetic": "화장품 특허", "naver": "화장품 검색"}
 COLOR = {"pubmed": "#4C72B0", "kipris_cosmetic": "#DD8452", "naver": "#55A868"}
 
 GROWTH = 0.30        # 전년 대비 30% 이상 = 오르는 중
@@ -324,6 +324,8 @@ def main():
 
 
 def plot(ids, smooth_s, o):
+    use_korean_font()
+    names = dict(zip(load_keywords().ingredient_id, load_keywords().name_ko))
     fig, axes = plt.subplots(2, 2, figsize=(13, 7.5), sharex=True)
     for ax, ing in zip(axes.flat, ids):
         for src in SOURCES:
@@ -335,10 +337,10 @@ def plot(ids, smooth_s, o):
             for v, ls in [(on.onset_yoy, "-"), (on.onset_cp, "--")]:
                 if to_period(v) is not None:
                     ax.axvline(to_period(v).to_timestamp(), color=COLOR[src], lw=1.4, ls=ls)
-        ax.set_title(ing)
+        ax.set_title(names.get(ing, ing))
         ax.grid(alpha=0.3)
     axes[0, 0].legend(loc="upper left", fontsize=8)
-    fig.suptitle("12-month totals scaled to max. Vertical lines = onset (solid: YoY rule, dashed: change point)")
+    fig.suptitle("12개월 합계 (최댓값 = 1). 세로선 = 상승 시작점 (실선: 전년 대비 규칙, 점선: 변화점 탐지)")
     fig.tight_layout()
     out = PROCESSED / "w4_onsets_train.png"
     fig.savefig(out, dpi=120)

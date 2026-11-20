@@ -22,6 +22,18 @@ def load_keywords(groups=None):
     return df.reset_index(drop=True)
 
 
+def use_korean_font():
+    """그래프 글자를 한국어로 쓰기 위한 글꼴 설정 (윈도우 맑은 고딕, 없으면 다른 한글 글꼴)."""
+    import matplotlib.pyplot as plt
+    from matplotlib import font_manager
+    have = {f.name for f in font_manager.fontManager.ttflist}
+    for name in ["Malgun Gothic", "Noto Sans KR", "AppleGothic", "NanumGothic"]:
+        if name in have:
+            plt.rcParams["font.family"] = name
+            break
+    plt.rcParams["axes.unicode_minus"] = False  # 마이너스 기호 깨짐 방지
+
+
 def today_tag():
     """파일 이름에 붙일 오늘 날짜 (예: 20261120)."""
     return date.today().strftime("%Y%m%d")

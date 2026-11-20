@@ -78,9 +78,16 @@ def main():
                         help="종료 월 (기본: 지난달)")
     parser.add_argument("--only", nargs="*", help="특정 성분만 수집 (예: --only PDRN CICA)")
     parser.add_argument("--dry-run", action="store_true", help="검색식과 호출 수만 출력")
+    parser.add_argument("--scan", action="store_true",
+                        help="7주차 새 후보(config/scan_keywords.csv) -> pubmed_scan_<날짜>.csv (기존 파일을 덮어쓰지 않음)")
     args = parser.parse_args()
 
     kw = load_keywords()
+    name = "pubmed"
+    if args.scan:
+        kw = pd.read_csv(ROOT / "config" / "scan_keywords.csv", encoding="utf-8-sig", dtype=str, keep_default_na=False)
+        kw = kw[kw["pubmed_query"] != ""]
+        name = "pubmed_scan"
     if args.only:
         kw = kw[kw["ingredient_id"].isin(args.only)]
     months = month_range(args.start, args.end)
@@ -99,7 +106,7 @@ def main():
     print("API 키 사용" if api_key else "API 키 없음 (느리게 수집합니다)")
 
     # 중간 저장 파일: 끊겼다가 다시 실행하면 이미 받은 칸은 건너뛴다
-    progress_path = RAW_DIR / "pubmed_progress.csv"
+    progress_path = RAW_DIR / f"{name}_progress.csv"
     done = {}
     if progress_path.exists():
         prev = pd.read_csv(progress_path)
@@ -128,7 +135,7 @@ def main():
     out.insert(1, "stage", "science")
     out.insert(2, "source", "pubmed")
     out["value_type"] = "count"
-    csv_path = raw_path("pubmed")
+    csv_path = raw_path(name)
     out.to_csv(csv_path, index=False, encoding="utf-8-sig")
 
     failed = out["value"].isna().sum()

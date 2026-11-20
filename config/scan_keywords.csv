@@ -1,13 +1,13 @@
-﻿ingredient_id,name_ko,stage,naver_keywords,note
-NAD,NAD·NMN,consumer,NAD크림|NAD세럼|NAD앰플|NMN크림|NMN세럼,업계 기사에서 PDRN 다음 후보로 거론 (이투데이 2026-06)
-AZULENE,아줄렌,consumer,아줄렌|아줄렌크림|아줄렌토너|아줄렌앰플,네이버 검색 증가율 상위 성분 (WWD코리아)
-ECTOIN,엑토인,consumer,엑토인|엑토인크림|엑토인세럼,해외 2026 트렌드 기사
-COPPER_PEPTIDE,구리 펩타이드,consumer,구리펩타이드|카퍼펩타이드|구리펩타이드세럼|카퍼펩타이드세럼,해외 2026 트렌드 기사
-EGF,EGF(성장인자),consumer,EGF크림|EGF앰플|EGF세럼,EGF만 쓰면 다른 뜻이 섞여 제품형을 붙임
-PDLLA,PDLLA(쥬베룩 성분),consumer,PDLLA|PDLLA크림|PDLLA앰플,쥬베룩 시술 성분의 화장품
-PN,PN(폴리뉴클레오타이드),consumer,PN크림|PN앰플|폴리뉴클레오타이드,리쥬란 HB 성분. PDRN과 가까움
-AZELAIC,아젤라산,consumer,아젤라산|아젤라익애씨드|아젤라익산,해외 2026 트렌드 기사
-PDLLA_PROC,쥬베룩 시술,procedure,쥬베룩|쥬베룩볼륨,PDLLA 스킨부스터 시술 (리쥬란 다음 2위권)
-NAD_PROC,NAD 주사,procedure,NAD주사|NAD수액|NAD링거,NAD 수액 시술
-ECM_PROC,리투오 시술,procedure,리투오,인체유래 ECM 스킨부스터
-ECM,ECM(세포외기질),consumer,ECM크림|ECM앰플|ECM화장품|세포외기질,리투오 시술의 화장품 쪽 대응
+﻿ingredient_id,name_ko,stage,naver_keywords,note,pubmed_query,kipris_keywords
+NAD,NAD·NMN,consumer,NAD크림|NAD세럼|NAD앰플|NMN크림|NMN세럼,업계 기사에서 PDRN 다음 후보로 거론 (이투데이 2026-06),"(""nicotinamide mononucleotide""[tiab] OR NMN[tiab] OR ""nicotinamide adenine dinucleotide""[tiab] OR NAD[tiab]) AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab] OR dermal[tiab])",니코틴아미드 모노뉴클레오티드|니코틴아마이드 모노뉴클레오타이드|니코틴아미드 모노뉴클레오타이드|니코틴아미드 아데닌 디뉴클레오티드|NMN
+AZULENE,아줄렌,consumer,아줄렌|아줄렌크림|아줄렌토너|아줄렌앰플,네이버 검색 증가율 상위 성분 (WWD코리아),,
+ECTOIN,엑토인,consumer,엑토인|엑토인크림|엑토인세럼,해외 2026 트렌드 기사,,
+COPPER_PEPTIDE,구리 펩타이드,consumer,구리펩타이드|카퍼펩타이드|구리펩타이드세럼|카퍼펩타이드세럼,해외 2026 트렌드 기사,,
+EGF,EGF(성장인자),consumer,EGF크림|EGF앰플|EGF세럼,EGF만 쓰면 다른 뜻이 섞여 제품형을 붙임,,
+PDLLA,PDLLA(쥬베룩 성분),consumer,PDLLA|PDLLA크림|PDLLA앰플,쥬베룩 시술 성분의 화장품,,
+PN,PN(폴리뉴클레오타이드),consumer,PN크림|PN앰플|폴리뉴클레오타이드,리쥬란 HB 성분. PDRN과 가까움,,
+AZELAIC,아젤라산,consumer,아젤라산|아젤라익애씨드|아젤라익산,해외 2026 트렌드 기사,"""azelaic acid""[tiab] AND (skin[tiab] OR cosmetic*[tiab] OR topical[tiab] OR acne[tiab] OR rosacea[tiab] OR melasma[tiab])",아젤라산|아젤라익산|아젤라익애씨드|아젤라익 애씨드
+PDLLA_PROC,쥬베룩 시술,procedure,쥬베룩|쥬베룩볼륨,PDLLA 스킨부스터 시술 (리쥬란 다음 2위권),,
+NAD_PROC,NAD 주사,procedure,NAD주사|NAD수액|NAD링거,NAD 수액 시술,,
+ECM_PROC,리투오 시술,procedure,리투오,인체유래 ECM 스킨부스터,,
+ECM,ECM(세포외기질),consumer,ECM크림|ECM앰플|ECM화장품|세포외기질,리투오 시술의 화장품 쪽 대응,"(""extracellular matrix""[tiab] OR ""acellular dermal matrix""[tiab]) AND (cosmetic*[tiab] OR ""skin aging""[tiab] OR ""skin rejuvenation""[tiab] OR ""skin booster""[tiab] OR wrinkle*[tiab])",세포외기질|세포외 기질|무세포 진피|무세포동종진피

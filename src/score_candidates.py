@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
 
-from common import ROOT, load_keywords
+from common import ROOT, load_keywords, use_korean_font
 
 PROCESSED = ROOT / "data" / "processed"
 PATENT_LAG = 18      # 특허 공개 지연 (개월)
@@ -163,40 +163,41 @@ def style(ax):
 
 
 def plot(cur, bt, path):
+    use_korean_font()
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 6.5), gridspec_kw={"width_ratios": [1.3, 1]})
     fig.patch.set_facecolor("#fcfcfb")
     c = cur.sort_values("score")
     y = np.arange(len(c))
-    parts = [("pub_pct", W_UP * 0.5, "Paper momentum", C["pub"]),
-             ("pat_pct", W_UP * 0.5, "Patent momentum", C["pat"]),
-             ("room_pct", 1 - W_UP, "Search headroom", C["room"])]
+    parts = [("pub_pct", W_UP * 0.5, "논문 모멘텀", C["pub"]),
+             ("pat_pct", W_UP * 0.5, "특허 모멘텀", C["pat"]),
+             ("room_pct", 1 - W_UP, "검색 여지", C["room"])]
     left = np.zeros(len(c))
     for col, w, lab, col_c in parts:
         v = (c[col] * w).values
         a1.barh(y, v, left=left, height=0.62, color=col_c, label=lab, edgecolor="#fcfcfb", linewidth=1.5)
         left += v
-    names = [f"{i}{' *' if g == 'train' else ''}" for i, g in zip(c.ingredient_id, c.group)]
+    names = [f"{n}{' *' if g == 'train' else ''}" for n, g in zip(c.name_ko, c.group)]
     a1.set_yticks(y, names)
     for yi, (sc, pm) in enumerate(zip(c.score, c.proc_mom)):
-        txt = f"{sc:.2f}" + ("" if np.isnan(pm) else f"   procedure {np.exp(pm) - 1:+.0%}")
+        txt = f"{sc:.2f}" + ("" if np.isnan(pm) else f"   시술 검색 {np.exp(pm) - 1:+.0%}")
         a1.text(sc + 0.01, yi, txt, va="center", fontsize=7.5, color=INK2)
     a1.set_xlim(0, 1.25)
-    a1.set_title(f"H2 score as of {cur["asof"].iloc[0]}  (* = training ingredient)", fontsize=10, color=INK, loc="left")
+    a1.set_title(f"H2 점수 ({cur["asof"].iloc[0]} 기준, * = 학습 성분)", fontsize=10, color=INK, loc="left")
     a1.legend(loc="lower right", fontsize=8, frameon=False)
     style(a1)
 
-    styles = {"H2 점수": (C["pat"], "H2 score"), "위쪽 신호만": (C["pub"], "Upstream only"),
-              "단순 추세(검색 증가율)": (INK2, "Naive: search trend")}
+    styles = {"H2 점수": (C["pat"], "H2 점수"), "위쪽 신호만": (C["pub"], "논문·특허 신호만"),
+              "단순 추세(검색 증가율)": (INK2, "단순 추세 (검색 증가율)")}
     for name, (col, lab) in styles.items():
         b = bt[bt.variant == name]
         x = pd.PeriodIndex(b["asof"], freq="M").to_timestamp()
         a2.plot(x, b.spearman, color=col, lw=2, marker="o", ms=5, label=lab)
     a2.axhspan(-RHO_SIG, RHO_SIG, color=GRID, alpha=0.6, lw=0)
-    a2.text(x.min(), RHO_SIG + 0.02, "not significant (|rho| < 0.44, n=20, p>0.05)", fontsize=7.5, color=INK2)
+    a2.text(x.min(), RHO_SIG + 0.02, "통계적으로 의미 없음 (|순위상관| < 0.44, 성분 20개)", fontsize=7.5, color=INK2)
     a2.axhline(0, color=INK2, lw=0.8)
     a2.set_ylim(-1, 1)
-    a2.set_title(f"Backtest: rank corr. with search growth over next {HORIZON} months", fontsize=10, color=INK, loc="left")
-    a2.set_ylabel("Spearman", fontsize=8, color=INK2)
+    a2.set_title(f"백테스트: 그 뒤 {HORIZON}개월 검색 증가와의 순위상관", fontsize=10, color=INK, loc="left")
+    a2.set_ylabel("순위상관 (스피어만)", fontsize=8, color=INK2)
     a2.legend(fontsize=8, frameon=False, loc="lower left")
     style(a2)
     a2.grid(axis="y", color=GRID, lw=0.8)
