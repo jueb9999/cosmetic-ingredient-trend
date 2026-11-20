@@ -29,6 +29,8 @@ K_COUNT = 5          # 건수 증가율 계산 시 더하는 값 (0 -> 2건 같�
 K_INDEX = 0.5        # 검색 지수에 더하는 값
 W_UP, W_ROOM = 0.6, 0.4
 DOUBLED = np.log(2)
+PAST_PEAK = 0.7      # 검색이 정점(3개월 평균)의 70% 아래면 '유행 지남'
+MIN_PEAK = 2.0       # 정점 자체가 이보다 작으면 잡음이 커서 판단하지 않음
 RHO_SIG = 0.44       # 성분 20개일 때 p<0.05가 되려면 필요한 |순위상관|  # 백테스트 '적중' = 3년 뒤 검색량이 2배 이상
 
 # 그래프 색: 기본 검증 팔레트 1~4번 (순서 고정)
@@ -81,6 +83,10 @@ def features(series, ings, asof):
         r["papers_12m"] = np.nan if pw is None else float(pw.sum())
         r["patents_12m"] = np.nan if tw is None else float(tw.sum())
         r["room"] = -np.log(r["search_level"] + K_INDEX)
+        # 정점 대비 지금 수준 (3개월 평균). 유행이 이미 지나 내려오는 성분을 거르기 위함
+        r3 = nav[nav.index <= asof].rolling(3).mean().dropna()
+        r["search_peak3"] = float(r3.max()) if len(r3) else np.nan
+        r["search_from_peak"] = float(r3.iloc[-1] / r3.max()) if len(r3) and r3.max() > 0 else np.nan
         rows.append(r)
     f = pd.DataFrame(rows)
     pct = lambda c: f[c].rank(pct=True)
@@ -106,6 +112,8 @@ def outcome(series, ings, asof):
 def label(r):
     if r.papers_12m + r.patents_12m < 10:
         return "근거 부족 (논문+특허 연 10건 미만)"
+    if r.search_from_peak < PAST_PEAK and r.search_peak3 >= MIN_PEAK:
+        return "유행 지남"
     if r.room_pct < 0.35:
         return "이미 대중화"
     if r.up_pct >= 0.6 and r.room_pct >= 0.5:
@@ -234,7 +242,7 @@ def main():
     bt, ranks = backtest(series, ings, last)
 
     cols = ["rank", "ingredient_id", "name_ko", "group", "score", "status", "pub_pct", "pat_pct", "room_pct",
-            "pub_mom", "pat_mom", "papers_12m", "patents_12m", "search_level", "search_mom",
+            "pub_mom", "pat_mom", "papers_12m", "patents_12m", "search_level", "search_mom", "search_from_peak",
             "proc_mom", "proc_level", "top5_in_all_weights", "asof", "patent_until"]
     cur = cur.sort_values("score", ascending=False)
     cur[cols].round(3).to_csv(PROCESSED / "scores.csv", index=False, encoding="utf-8-sig")

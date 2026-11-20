@@ -13,6 +13,7 @@
     python src/collect_naver.py --dry-run          # 요청 계획만 출력 (API 키 없어도 됨)
     python src/collect_naver.py                    # 실제 수집
     python src/collect_naver.py --start 2016-01-01 --end 2026-10-31
+    python src/collect_naver.py --scan             # 새 후보 탐색 (config/scan_keywords.csv) -> naver_scan_<날짜>.csv
     python src/collect_naver.py --procedure        # 시술 검색어(config/procedure_keywords.csv)
         -> 같은 앵커(히알루론산)로 맞추므로 화장품 검색량과 같은 기준으로 비교 가능
            저장: data/raw/naver_procedure_<날짜>.csv (stage=procedure, source=naver_procedure)
@@ -112,6 +113,7 @@ def main():
     parser.add_argument("--end", default=pd.Timestamp.today().strftime("%Y-%m-%d"), help="종료일")
     parser.add_argument("--dry-run", action="store_true", help="요청 계획만 출력")
     parser.add_argument("--procedure", action="store_true", help="시술 검색어 수집")
+    parser.add_argument("--scan", action="store_true", help="새 후보 탐색용 검색어 수집 (config/scan_keywords.csv)")
     args = parser.parse_args()
 
     kw = load_keywords()
@@ -122,7 +124,15 @@ def main():
         proc["group"] = "procedure"
         kw = pd.concat([kw[kw["group"] == "anchor"], proc[["ingredient_id", "group", "naver_keywords"]]],
                        ignore_index=True)
+    if args.scan:
+        scan = pd.read_csv(ROOT / "config" / "scan_keywords.csv", encoding="utf-8-sig")
+        scan["naver_keywords"] = scan["naver_keywords"].str.split("|")
+        scan["group"] = "scan"
+        kw = pd.concat([kw[kw["group"] == "anchor"], scan[["ingredient_id", "group", "naver_keywords"]]],
+                       ignore_index=True)
     stage, source = ("procedure", "naver_procedure") if args.procedure else ("consumer", "naver")
+    if args.scan:
+        stage, source = "scan", "naver_scan"
     bodies, anchor_id = build_requests(kw, args.start, args.end)
     print(f"성분 {len(kw) - 1}개 + 앵커({anchor_id}) -> 요청 {len(bodies)}번")
 
@@ -154,6 +164,9 @@ def main():
     # 2) 정리된 표 저장. 앵커는 요청마다 같은 값이 들어 있으니 한 번만 남긴다
     out = pd.concat(frames, ignore_index=True)
     out = out.drop_duplicates(subset=["ingredient_id", "month"], keep="first")
+    if args.scan:  # 성분마다 소비자/시술 구분은 scan_keywords.csv의 stage를 따른다
+        out = out[out["ingredient_id"] != anchor_id]
+        stage = out["ingredient_id"].map(dict(zip(scan.ingredient_id, scan.stage)))
     if args.procedure:  # 앵커 행은 화장품 수집 파일에 이미 있으므로 뺀다
         out = out[out["ingredient_id"] != anchor_id]
     out.insert(1, "stage", stage)
