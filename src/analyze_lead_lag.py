@@ -19,7 +19,8 @@
 방법 2. 시작점(onset) - 변화점 탐지
   log(R) 그래프를 직선 1~4개로 나눠 가장 잘 맞는 방법을 찾는다(BIC로 직선 개수 결정,
   한 직선은 최소 12개월). 연 30% 이상 오르는 직선 구간 중 R이 가장 많이 늘어난 구간의 첫 달을 시작점으로 한다.
-  (ruptures 패키지와 같은 원리. Python 3.14용 ruptures가 없어 numpy로 직접 구현)
+  ruptures 패키지(Dynp, 연속 직선 모델 clinear)로 계산한다. ruptures가 없으면(Python 3.14 등)
+  같은 원리를 numpy로 직접 구현한 예비 함수를 쓴다.
 
 방법 3. 교차상관(CCF)
   두 지표의 '전년 대비 성장률'을 만들고, 앞선 지표를 k개월 뒤로 밀었을 때 상관이 가장 큰 k를 찾는다.
@@ -49,6 +50,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from statsmodels.tsa.stattools import adfuller, grangercausalitytests
+
+try:
+    import ruptures as rpt
+except ImportError:  # Python 3.14용 설치 파일이 아직 없음
+    rpt = None
 
 from common import ROOT, load_keywords
 
@@ -138,7 +144,7 @@ def _seg_cost_table(y):
     return cost
 
 
-def segment(y):
+def segment_numpy(y):
     """y를 직선 1~MAX_SEGS개로 나눈 최적 구간 목록 [(시작, 끝, 기울기)]을 돌려준다."""
     n = len(y)
     cost = _seg_cost_table(y)
@@ -166,6 +172,32 @@ def segment(y):
                     j = i
                 best = (bic, segs[::-1])
     return [(i, j, cost(i, j)[1]) for i, j in best[1]]
+
+
+def segment_ruptures(y):
+    """ruptures로 y를 직선 1~MAX_SEGS개로 나누고 BIC가 가장 작은 경우를 고른다."""
+    n = len(y)
+    algo = rpt.Dynp(model="clinear", min_size=MIN_SEG, jump=1).fit(y)
+    best = None
+    for k in range(1, MAX_SEGS + 1):
+        try:
+            bkps = [n] if k == 1 else algo.predict(n_bkps=k - 1)
+        except Exception:  # 데이터가 짧아 그만큼 나눌 수 없음
+            break
+        sse = max(algo.cost.sum_of_costs(bkps), 1e-12)
+        bic = n * np.log(sse / n) + 3 * k * np.log(n)
+        if best is None or bic < best[0]:
+            best = (bic, bkps)
+    segs, start = [], 0
+    for end in best[1]:
+        slope = np.polyfit(np.arange(start, end), y[start:end], 1)[0]
+        segs.append((start, end, slope))
+        start = end
+    return segs
+
+
+def segment(y):
+    return segment_ruptures(y) if rpt is not None else segment_numpy(y)
 
 
 def onset_cp(r):

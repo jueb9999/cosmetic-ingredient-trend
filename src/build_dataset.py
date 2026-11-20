@@ -11,7 +11,7 @@
 결과 열
   ingredient_id, name_ko, group   : 성분 정보 (keywords.csv에서)
   stage    : science(논문) / patent(특허) / consumer(소비자 검색)
-  source   : pubmed / kipris_cosmetic / kipris_all / naver
+  source   : pubmed / kipris_cosmetic / kipris_all / naver / naver_procedure(시술 검색)
   month    : YYYY-MM
   value    : 값 (논문·특허는 건수, 네이버는 히알루론산=100 기준 상대값)
   value_type: count / index
@@ -33,7 +33,7 @@ from common import RAW_DIR, ROOT, load_keywords, today_tag
 
 PROCESSED = ROOT / "data" / "processed"
 PATENT_LAG_MONTHS = 18
-STAGE_ORDER = ["science", "patent", "consumer"]
+STAGE_ORDER = ["procedure", "science", "patent", "consumer"]
 
 
 def latest(prefix):
@@ -44,22 +44,27 @@ def latest(prefix):
     return pd.read_csv(files[-1], encoding="utf-8-sig"), files[-1].stem.split("_")[-1]
 
 
-def load_naver():
-    df, tag = latest("naver")
+def load_naver(prefix="naver"):
+    df, tag = latest(prefix)
     # 수집한 달은 며칠치만 들어 있어서 다른 달과 비교할 수 없다 -> 제외
     collected = pd.Period(pd.Timestamp(tag), freq="M")
     df = df[pd.PeriodIndex(df["month"], freq="M") < collected]
     out = df[["ingredient_id", "stage", "source", "month"]].copy()
     out["value"] = df["value_scaled"]
     out["value_type"] = "index"
-    return out
+    return out[["ingredient_id", "stage", "source", "month", "value", "value_type"]]
 
 
 def main():
     naver = load_naver()
     pubmed, _ = latest("pubmed")
     kipris, _ = latest("kipris")
-    long = pd.concat([pubmed, kipris, naver], ignore_index=True)
+    frames = [pubmed, kipris, naver]
+    if list(RAW_DIR.glob("naver_procedure_2*.csv")):  # 시술 검색량 (선택)
+        proc = load_naver("naver_procedure")
+        proc["ingredient_id"] = proc["ingredient_id"].str.replace("_PROC", "", regex=False)
+        frames.append(proc)
+    long = pd.concat(frames, ignore_index=True)
     long["month"] = long["month"].astype(str)
 
     # 특허 마지막 18개월은 '잠정치'

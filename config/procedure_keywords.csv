@@ -1,0 +1,7 @@
+﻿ingredient_id,procedure_keywords,note
+PDRN,리쥬란|리쥬란힐러|연어주사|PDRN주사,PDRN 스킨부스터 시술(파마리서치 리쥬란)
+EXOSOME,엑소좀시술|엑소좀주사,
+GLUTATHIONE,백옥주사|글루타치온주사,신데렐라주사는 치옥트산이라 제외
+PEPTIDE,보톡스|주름보톡스,바르는 보톡스(펩타이드)의 원조 시술
+SPICULE,MTS시술|마이크로니들링,'MTS'만 쓰면 다른 뜻이 섞여 '시술'을 붙임
+HYALURONIC_PROC,물광주사,히알루론산 시술. 앵커(HYALURONIC)와 이름이 겹치지 않게 _PROC를 붙임. 필러는 2016년 이전부터 유행이라 제외

@@ -13,6 +13,9 @@
     python src/collect_naver.py --dry-run          # 요청 계획만 출력 (API 키 없어도 됨)
     python src/collect_naver.py                    # 실제 수집
     python src/collect_naver.py --start 2016-01-01 --end 2026-10-31
+    python src/collect_naver.py --procedure        # 시술 검색어(config/procedure_keywords.csv)
+        -> 같은 앵커(히알루론산)로 맞추므로 화장품 검색량과 같은 기준으로 비교 가능
+           저장: data/raw/naver_procedure_<날짜>.csv (stage=procedure, source=naver_procedure)
 """
 import argparse
 import json
@@ -108,9 +111,18 @@ def main():
     parser.add_argument("--start", default="2016-01-01", help="시작일 (2016-01-01 이후)")
     parser.add_argument("--end", default=pd.Timestamp.today().strftime("%Y-%m-%d"), help="종료일")
     parser.add_argument("--dry-run", action="store_true", help="요청 계획만 출력")
+    parser.add_argument("--procedure", action="store_true", help="시술 검색어 수집")
     args = parser.parse_args()
 
     kw = load_keywords()
+    if args.procedure:
+        # 앵커는 그대로 두고, 대상만 시술 검색어로 바꾼다
+        proc = pd.read_csv(ROOT / "config" / "procedure_keywords.csv", encoding="utf-8-sig")
+        proc["naver_keywords"] = proc["procedure_keywords"].str.split("|")
+        proc["group"] = "procedure"
+        kw = pd.concat([kw[kw["group"] == "anchor"], proc[["ingredient_id", "group", "naver_keywords"]]],
+                       ignore_index=True)
+    stage, source = ("procedure", "naver_procedure") if args.procedure else ("consumer", "naver")
     bodies, anchor_id = build_requests(kw, args.start, args.end)
     print(f"성분 {len(kw) - 1}개 + 앵커({anchor_id}) -> 요청 {len(bodies)}번")
 
@@ -136,15 +148,17 @@ def main():
         time.sleep(SLEEP_SEC)
 
     # 1) 원본 응답 저장 (나중에 가공 방식을 바꿔도 다시 호출할 필요 없음)
-    json_path = raw_path("naver_raw", "json")
+    json_path = raw_path(f"{source}_raw", "json")
     json_path.write_text(json.dumps(raw_responses, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # 2) 정리된 표 저장. 앵커는 요청마다 같은 값이 들어 있으니 한 번만 남긴다
     out = pd.concat(frames, ignore_index=True)
     out = out.drop_duplicates(subset=["ingredient_id", "month"], keep="first")
-    out.insert(1, "stage", "consumer")
-    out.insert(2, "source", "naver")
-    csv_path = raw_path("naver")
+    if args.procedure:  # 앵커 행은 화장품 수집 파일에 이미 있으므로 뺀다
+        out = out[out["ingredient_id"] != anchor_id]
+    out.insert(1, "stage", stage)
+    out.insert(2, "source", source)
+    csv_path = raw_path(source)
     out.to_csv(csv_path, index=False, encoding="utf-8-sig")
 
     print(f"\n저장 완료\n  원본: {json_path}\n  표:   {csv_path}  ({len(out):,}행)")

@@ -1,64 +1,64 @@
 ﻿ingredient_id,upstream,downstream,lag_onset_yoy,lag_onset_cp,ccf_best_lag,ccf_best_r,ccf_r_at_0,granger_best_lag,granger_p,granger_p_bonf,downstream_censored,low_volume,name_ko,group
-PDRN,pubmed,naver,-30.0,15.0,-14,0.58,0.35,12,0.0097,0.1169,False,False,PDRN,train
-PDRN,kipris_cosmetic,naver,-7.0,39.0,-5,0.31,0.27,2,0.0174,0.2087,False,False,PDRN,train
-PDRN,pubmed,kipris_cosmetic,-23.0,-24.0,-17,0.44,0.18,10,0.0194,0.2332,False,False,PDRN,train
+PDRN,pubmed,naver,-30.0,19.0,-14,0.58,0.35,12,0.0097,0.1169,False,False,PDRN,train
+PDRN,kipris_cosmetic,naver,-7.0,15.0,-5,0.31,0.27,2,0.0174,0.2087,False,False,PDRN,train
+PDRN,pubmed,kipris_cosmetic,-23.0,4.0,-17,0.44,0.18,10,0.0194,0.2332,False,False,PDRN,train
 CICA,pubmed,naver,-88.0,12.0,21,0.81,-0.22,8,0.0666,0.7987,True,False,시카(병풀),train
-CICA,kipris_cosmetic,naver,-4.0,,-8,0.63,0.1,10,0.0002,0.0025,True,False,시카(병풀),train
-CICA,pubmed,kipris_cosmetic,-84.0,,26,0.65,0.29,3,0.5097,1.0,False,False,시카(병풀),train
+CICA,kipris_cosmetic,naver,-4.0,48.0,-8,0.63,0.1,10,0.0002,0.0025,True,False,시카(병풀),train
+CICA,pubmed,kipris_cosmetic,-84.0,-36.0,26,0.65,0.29,3,0.5097,1.0,False,False,시카(병풀),train
 NIACINAMIDE,pubmed,naver,-15.0,,-11,0.45,-0.51,11,0.0317,0.3806,False,False,나이아신아마이드,train
-NIACINAMIDE,kipris_cosmetic,naver,84.0,95.0,24,0.37,-0.22,11,0.0261,0.3135,False,False,나이아신아마이드,train
+NIACINAMIDE,kipris_cosmetic,naver,84.0,89.0,24,0.37,-0.22,11,0.0261,0.3135,False,False,나이아신아마이드,train
 NIACINAMIDE,pubmed,kipris_cosmetic,-99.0,,26,0.6,0.39,2,0.0451,0.5413,False,False,나이아신아마이드,train
-RETINOL,pubmed,naver,35.0,,11,0.49,-0.03,10,0.2022,1.0,False,False,레티놀,train
-RETINOL,kipris_cosmetic,naver,41.0,35.0,11,0.63,-0.04,12,0.4695,1.0,False,False,레티놀,train
-RETINOL,pubmed,kipris_cosmetic,-6.0,,5,0.66,0.48,12,0.0328,0.3938,False,False,레티놀,train
-EXOSOME,pubmed,naver,-56.0,14.0,0,0.51,0.51,11,0.0218,0.2617,False,False,엑소좀,candidate
-EXOSOME,kipris_cosmetic,naver,1.0,30.0,19,0.42,-0.29,8,0.0054,0.0654,False,False,엑소좀,candidate
-EXOSOME,pubmed,kipris_cosmetic,-57.0,-16.0,1,0.51,0.49,11,0.0,0.0001,False,False,엑소좀,candidate
-MICROBIOME,pubmed,naver,3.0,5.0,-23,0.56,0.42,4,0.0602,0.7221,False,False,마이크로바이옴·발효,candidate
-MICROBIOME,kipris_cosmetic,naver,106.0,132.0,34,0.66,0.09,3,0.0443,0.531,False,False,마이크로바이옴·발효,candidate
-MICROBIOME,pubmed,kipris_cosmetic,-103.0,-127.0,22,0.54,0.3,11,0.1354,1.0,False,False,마이크로바이옴·발효,candidate
+RETINOL,pubmed,naver,35.0,8.0,11,0.49,-0.03,10,0.2022,1.0,False,False,레티놀,train
+RETINOL,kipris_cosmetic,naver,41.0,13.0,11,0.63,-0.04,12,0.4695,1.0,False,False,레티놀,train
+RETINOL,pubmed,kipris_cosmetic,-6.0,-5.0,5,0.66,0.48,12,0.0328,0.3938,False,False,레티놀,train
+EXOSOME,pubmed,naver,-56.0,37.0,0,0.51,0.51,11,0.0218,0.2617,False,False,엑소좀,candidate
+EXOSOME,kipris_cosmetic,naver,1.0,59.0,19,0.42,-0.29,8,0.0054,0.0654,False,False,엑소좀,candidate
+EXOSOME,pubmed,kipris_cosmetic,-57.0,-22.0,1,0.51,0.49,11,0.0,0.0001,False,False,엑소좀,candidate
+MICROBIOME,pubmed,naver,3.0,,-23,0.56,0.42,4,0.0602,0.7221,False,False,마이크로바이옴·발효,candidate
+MICROBIOME,kipris_cosmetic,naver,106.0,,34,0.66,0.09,3,0.0443,0.531,False,False,마이크로바이옴·발효,candidate
+MICROBIOME,pubmed,kipris_cosmetic,-103.0,-36.0,22,0.54,0.3,11,0.1354,1.0,False,False,마이크로바이옴·발효,candidate
 PEPTIDE,pubmed,naver,-23.0,,-14,0.37,-0.25,8,0.1302,1.0,False,False,펩타이드(바르는 보톡스),candidate
 PEPTIDE,kipris_cosmetic,naver,24.0,,11,0.39,0.06,9,0.2802,1.0,False,False,펩타이드(바르는 보톡스),candidate
-PEPTIDE,pubmed,kipris_cosmetic,-47.0,-104.0,20,0.44,-0.37,11,0.0044,0.0531,False,False,펩타이드(바르는 보톡스),candidate
-EGCG,pubmed,naver,-66.0,14.0,-5,0.36,0.33,3,0.012,0.1442,False,False,녹차(EGCG),candidate
-EGCG,kipris_cosmetic,naver,8.0,-41.0,7,0.36,0.19,12,0.0417,0.5003,False,True,녹차(EGCG),candidate
-EGCG,pubmed,kipris_cosmetic,-74.0,55.0,-12,0.66,-0.32,11,0.1168,1.0,False,True,녹차(EGCG),candidate
+PEPTIDE,pubmed,kipris_cosmetic,-47.0,-113.0,20,0.44,-0.37,11,0.0044,0.0531,False,False,펩타이드(바르는 보톡스),candidate
+EGCG,pubmed,naver,-66.0,8.0,-5,0.36,0.33,3,0.012,0.1442,False,False,녹차(EGCG),candidate
+EGCG,kipris_cosmetic,naver,8.0,59.0,7,0.36,0.19,12,0.0417,0.5003,False,True,녹차(EGCG),candidate
+EGCG,pubmed,kipris_cosmetic,-74.0,-51.0,-12,0.66,-0.32,11,0.1168,1.0,False,True,녹차(EGCG),candidate
 FUCOXANTHIN,pubmed,naver,15.0,,27,0.15,-0.05,10,0.2571,1.0,False,True,푸코잔틴(미역·다시마),candidate
 FUCOXANTHIN,kipris_cosmetic,naver,56.0,,13,0.56,-0.25,6,0.2126,1.0,False,True,푸코잔틴(미역·다시마),candidate
-FUCOXANTHIN,pubmed,kipris_cosmetic,-41.0,45.0,0,0.51,0.51,1,0.0166,0.1989,False,True,푸코잔틴(미역·다시마),candidate
-RICE,pubmed,naver,31.0,70.0,-1,0.5,0.47,3,0.1573,1.0,False,True,쌀(K-곡물),candidate
-RICE,kipris_cosmetic,naver,156.0,154.0,26,0.48,0.05,6,0.0048,0.0579,False,True,쌀(K-곡물),candidate
-RICE,pubmed,kipris_cosmetic,-125.0,-84.0,-4,0.59,0.29,3,0.0202,0.243,True,False,쌀(K-곡물),candidate
-PLANT_PDRN,pubmed,naver,-18.0,-32.0,16,0.51,0.08,11,0.0,0.0,False,True,식물성 PDRN,candidate
-PLANT_PDRN,kipris_cosmetic,naver,14.0,5.0,5,0.57,0.49,9,0.0,0.0,False,True,식물성 PDRN,candidate
-PLANT_PDRN,pubmed,kipris_cosmetic,-32.0,-37.0,-8,0.4,0.11,9,0.0,0.0,False,True,식물성 PDRN,candidate
-RECOMB_COLLAGEN,pubmed,naver,-14.0,18.0,36,0.35,-0.39,9,0.0,0.0,False,True,재조합 콜라겐,candidate
-RECOMB_COLLAGEN,kipris_cosmetic,naver,11.0,93.0,-11,0.47,-0.41,6,0.002,0.0239,False,True,재조합 콜라겐,candidate
-RECOMB_COLLAGEN,pubmed,kipris_cosmetic,-25.0,-75.0,6,0.32,0.13,2,0.0187,0.2241,False,True,재조합 콜라겐,candidate
-BAKUCHIOL,pubmed,naver,37.0,41.0,36,0.38,-0.13,11,0.003,0.0358,False,False,바쿠치올,candidate
-BAKUCHIOL,kipris_cosmetic,naver,-25.0,-30.0,3,0.57,0.48,12,0.0027,0.0321,False,True,바쿠치올,candidate
-BAKUCHIOL,pubmed,kipris_cosmetic,62.0,71.0,36,0.48,-0.23,1,0.1229,1.0,False,True,바쿠치올,candidate
-GLUTATHIONE,pubmed,naver,26.0,34.0,20,0.52,-0.38,11,0.0049,0.0585,False,False,글루타치온,candidate
-GLUTATHIONE,kipris_cosmetic,naver,-3.0,-4.0,-15,0.38,0.24,12,0.0007,0.0082,False,False,글루타치온,candidate
-GLUTATHIONE,pubmed,kipris_cosmetic,29.0,38.0,33,0.38,-0.21,1,0.0075,0.0895,False,False,글루타치온,candidate
-TRANEXAMIC,pubmed,naver,35.0,65.0,-23,0.23,-0.18,3,0.0602,0.7227,False,False,트라넥삼산,candidate
-TRANEXAMIC,kipris_cosmetic,naver,8.0,58.0,0,0.23,0.23,6,0.0401,0.4808,False,True,트라넥삼산,candidate
-TRANEXAMIC,pubmed,kipris_cosmetic,27.0,7.0,10,0.43,-0.36,11,0.0228,0.2742,False,True,트라넥삼산,candidate
-MUGWORT,pubmed,naver,-23.0,28.0,-24,0.77,-0.53,10,0.0421,0.5056,False,True,쑥,candidate
+FUCOXANTHIN,pubmed,kipris_cosmetic,-41.0,28.0,0,0.51,0.51,1,0.0166,0.1989,False,True,푸코잔틴(미역·다시마),candidate
+RICE,pubmed,naver,31.0,79.0,-1,0.5,0.47,3,0.1573,1.0,False,True,쌀(K-곡물),candidate
+RICE,kipris_cosmetic,naver,156.0,159.0,26,0.48,0.05,6,0.0048,0.0579,False,True,쌀(K-곡물),candidate
+RICE,pubmed,kipris_cosmetic,-125.0,-80.0,-4,0.59,0.29,3,0.0202,0.243,True,False,쌀(K-곡물),candidate
+PLANT_PDRN,pubmed,naver,-18.0,-28.0,16,0.51,0.08,11,0.0,0.0,False,True,식물성 PDRN,candidate
+PLANT_PDRN,kipris_cosmetic,naver,14.0,14.0,5,0.57,0.49,9,0.0,0.0,False,True,식물성 PDRN,candidate
+PLANT_PDRN,pubmed,kipris_cosmetic,-32.0,-42.0,-8,0.4,0.11,9,0.0,0.0,False,True,식물성 PDRN,candidate
+RECOMB_COLLAGEN,pubmed,naver,-14.0,-20.0,36,0.35,-0.39,9,0.0,0.0,False,True,재조합 콜라겐,candidate
+RECOMB_COLLAGEN,kipris_cosmetic,naver,11.0,4.0,-11,0.47,-0.41,6,0.002,0.0239,False,True,재조합 콜라겐,candidate
+RECOMB_COLLAGEN,pubmed,kipris_cosmetic,-25.0,-24.0,6,0.32,0.13,2,0.0187,0.2241,False,True,재조합 콜라겐,candidate
+BAKUCHIOL,pubmed,naver,37.0,34.0,36,0.38,-0.13,11,0.003,0.0358,False,False,바쿠치올,candidate
+BAKUCHIOL,kipris_cosmetic,naver,-25.0,-13.0,3,0.57,0.48,12,0.0027,0.0321,False,True,바쿠치올,candidate
+BAKUCHIOL,pubmed,kipris_cosmetic,62.0,47.0,36,0.48,-0.23,1,0.1229,1.0,False,True,바쿠치올,candidate
+GLUTATHIONE,pubmed,naver,26.0,27.0,20,0.52,-0.38,11,0.0049,0.0585,False,False,글루타치온,candidate
+GLUTATHIONE,kipris_cosmetic,naver,-3.0,0.0,-15,0.38,0.24,12,0.0007,0.0082,False,False,글루타치온,candidate
+GLUTATHIONE,pubmed,kipris_cosmetic,29.0,27.0,33,0.38,-0.21,1,0.0075,0.0895,False,False,글루타치온,candidate
+TRANEXAMIC,pubmed,naver,35.0,60.0,-23,0.23,-0.18,3,0.0602,0.7227,False,False,트라넥삼산,candidate
+TRANEXAMIC,kipris_cosmetic,naver,8.0,103.0,0,0.23,0.23,6,0.0401,0.4808,False,True,트라넥삼산,candidate
+TRANEXAMIC,pubmed,kipris_cosmetic,27.0,-43.0,10,0.43,-0.36,11,0.0228,0.2742,False,True,트라넥삼산,candidate
+MUGWORT,pubmed,naver,-23.0,26.0,-24,0.77,-0.53,10,0.0421,0.5056,False,True,쑥,candidate
 MUGWORT,kipris_cosmetic,naver,-8.0,,-8,0.65,0.15,12,0.0358,0.429,False,False,쑥,candidate
 MUGWORT,pubmed,kipris_cosmetic,-15.0,,-15,0.75,-0.32,1,0.2345,1.0,False,True,쑥,candidate
 HEARTLEAF,pubmed,naver,,,17,0.47,-0.08,1,0.1867,1.0,False,True,어성초,candidate
 HEARTLEAF,kipris_cosmetic,naver,,,26,0.32,0.07,6,0.0845,1.0,False,False,어성초,candidate
-HEARTLEAF,pubmed,kipris_cosmetic,-58.0,,14,0.39,0.18,2,0.429,1.0,False,True,어성초,candidate
-SPICULE,pubmed,naver,-12.0,-14.0,-14,0.49,-0.05,2,0.1596,1.0,False,True,스피큘,candidate
-SPICULE,kipris_cosmetic,naver,-15.0,,-19,0.77,-0.56,9,0.0063,0.0759,False,False,스피큘,candidate
-SPICULE,pubmed,kipris_cosmetic,3.0,,2,0.52,0.49,6,0.0445,0.5338,False,True,스피큘,candidate
-ASTAXANTHIN,pubmed,naver,-43.0,-38.0,-13,0.35,-0.46,3,0.0702,0.8428,False,False,아스타잔틴,candidate
-ASTAXANTHIN,kipris_cosmetic,naver,55.0,136.0,32,0.62,0.0,11,0.0041,0.0498,False,True,아스타잔틴,candidate
-ASTAXANTHIN,pubmed,kipris_cosmetic,-98.0,-174.0,-1,0.63,0.61,11,0.0267,0.3201,False,True,아스타잔틴,candidate
+HEARTLEAF,pubmed,kipris_cosmetic,-58.0,-56.0,14,0.39,0.18,2,0.429,1.0,False,True,어성초,candidate
+SPICULE,pubmed,naver,-12.0,-28.0,-14,0.49,-0.05,2,0.1596,1.0,False,True,스피큘,candidate
+SPICULE,kipris_cosmetic,naver,-15.0,-18.0,-19,0.77,-0.56,9,0.0063,0.0759,False,False,스피큘,candidate
+SPICULE,pubmed,kipris_cosmetic,3.0,-10.0,2,0.52,0.49,6,0.0445,0.5338,False,True,스피큘,candidate
+ASTAXANTHIN,pubmed,naver,-43.0,-74.0,-13,0.35,-0.46,3,0.0702,0.8428,False,False,아스타잔틴,candidate
+ASTAXANTHIN,kipris_cosmetic,naver,55.0,28.0,32,0.62,0.0,11,0.0041,0.0498,False,True,아스타잔틴,candidate
+ASTAXANTHIN,pubmed,kipris_cosmetic,-98.0,-102.0,-1,0.63,0.61,11,0.0267,0.3201,False,True,아스타잔틴,candidate
 CERAMIDE,pubmed,naver,40.0,,-4,0.42,0.29,5,0.0605,0.7255,False,False,세라마이드,candidate
 CERAMIDE,kipris_cosmetic,naver,99.0,,7,0.35,0.09,1,0.3081,1.0,False,False,세라마이드,candidate
-CERAMIDE,pubmed,kipris_cosmetic,-59.0,,-9,0.55,0.2,11,0.0338,0.4053,False,False,세라마이드,candidate
-HYALURONIC,pubmed,naver,-25.0,,-4,0.62,0.44,8,0.0003,0.0036,True,False,히알루론산(앵커),anchor
-HYALURONIC,kipris_cosmetic,naver,39.0,72.0,-5,0.69,0.24,9,0.0884,1.0,True,False,히알루론산(앵커),anchor
-HYALURONIC,pubmed,kipris_cosmetic,-64.0,,-22,0.59,0.39,2,0.4608,1.0,False,False,히알루론산(앵커),anchor
+CERAMIDE,pubmed,kipris_cosmetic,-59.0,-43.0,-9,0.55,0.2,11,0.0338,0.4053,False,False,세라마이드,candidate
+HYALURONIC,pubmed,naver,-25.0,-26.0,-4,0.62,0.44,8,0.0003,0.0036,True,False,히알루론산(앵커),anchor
+HYALURONIC,kipris_cosmetic,naver,39.0,-88.0,-5,0.69,0.24,9,0.0884,1.0,True,False,히알루론산(앵커),anchor
+HYALURONIC,pubmed,kipris_cosmetic,-64.0,62.0,-22,0.59,0.39,2,0.4608,1.0,False,False,히알루론산(앵커),anchor

@@ -1,64 +1,64 @@
 ﻿ingredient_id,source,onset_yoy,onset_cp,first_possible,censored,low_volume,name_ko,group
-ASTAXANTHIN,kipris_cosmetic,2017-09,2010-12,2011-12,False,True,아스타잔틴,candidate
-ASTAXANTHIN,naver,2022-04,2022-04,2017-12,False,False,아스타잔틴,candidate
-ASTAXANTHIN,pubmed,2025-11,2025-06,2016-12,False,False,아스타잔틴,candidate
-BAKUCHIOL,kipris_cosmetic,2023-11,2024-05,2011-12,False,True,바쿠치올,candidate
-BAKUCHIOL,naver,2021-10,2021-11,2017-12,False,False,바쿠치올,candidate
-BAKUCHIOL,pubmed,2018-09,2018-06,2016-12,False,False,바쿠치올,candidate
-CERAMIDE,kipris_cosmetic,2012-11,2012-03,2011-12,False,False,세라마이드,candidate
+ASTAXANTHIN,kipris_cosmetic,2017-09,2017-05,2011-12,False,True,아스타잔틴,candidate
+ASTAXANTHIN,naver,2022-04,2019-09,2017-12,False,False,아스타잔틴,candidate
+ASTAXANTHIN,pubmed,2025-11,2025-11,2016-12,False,False,아스타잔틴,candidate
+BAKUCHIOL,kipris_cosmetic,2023-11,2022-03,2011-12,False,True,바쿠치올,candidate
+BAKUCHIOL,naver,2021-10,2021-02,2017-12,False,False,바쿠치올,candidate
+BAKUCHIOL,pubmed,2018-09,2018-04,2016-12,False,False,바쿠치올,candidate
+CERAMIDE,kipris_cosmetic,2012-11,2012-05,2011-12,False,False,세라마이드,candidate
 CERAMIDE,naver,2021-02,,2017-12,False,False,세라마이드,candidate
-CERAMIDE,pubmed,2017-10,,2016-12,False,False,세라마이드,candidate
-CICA,kipris_cosmetic,2018-04,,2011-12,False,False,시카(병풀),train
+CERAMIDE,pubmed,2017-10,2015-12,2016-12,False,False,세라마이드,candidate
+CICA,kipris_cosmetic,2018-04,2012-12,2011-12,False,False,시카(병풀),train
 CICA,naver,2017-12,2016-12,2017-12,True,False,시카(병풀),train
 CICA,pubmed,2025-04,2015-12,2016-12,False,False,시카(병풀),train
-EGCG,kipris_cosmetic,2018-10,2022-11,2011-12,False,True,녹차(EGCG),candidate
-EGCG,naver,2019-06,2019-06,2017-12,False,False,녹차(EGCG),candidate
-EGCG,pubmed,2024-12,2018-04,2016-12,False,False,녹차(EGCG),candidate
-EXOSOME,kipris_cosmetic,2020-10,2018-06,2011-12,False,False,엑소좀,candidate
-EXOSOME,naver,2020-11,2020-12,2017-12,False,False,엑소좀,candidate
-EXOSOME,pubmed,2025-07,2019-10,2016-12,False,False,엑소좀,candidate
-FUCOXANTHIN,kipris_cosmetic,2016-02,2021-06,2011-12,False,True,푸코잔틴(미역·다시마),candidate
+EGCG,kipris_cosmetic,2018-10,2014-04,2011-12,False,True,녹차(EGCG),candidate
+EGCG,naver,2019-06,2019-03,2017-12,False,False,녹차(EGCG),candidate
+EGCG,pubmed,2024-12,2018-07,2016-12,False,False,녹차(EGCG),candidate
+EXOSOME,kipris_cosmetic,2020-10,2016-03,2011-12,False,False,엑소좀,candidate
+EXOSOME,naver,2020-11,2021-02,2017-12,False,False,엑소좀,candidate
+EXOSOME,pubmed,2025-07,2018-01,2016-12,False,False,엑소좀,candidate
+FUCOXANTHIN,kipris_cosmetic,2016-02,2018-04,2011-12,False,True,푸코잔틴(미역·다시마),candidate
 FUCOXANTHIN,naver,2020-10,,2017-12,False,True,푸코잔틴(미역·다시마),candidate
-FUCOXANTHIN,pubmed,2019-07,2017-09,2016-12,False,True,푸코잔틴(미역·다시마),candidate
-GLUTATHIONE,kipris_cosmetic,2022-11,2022-08,2011-12,False,False,글루타치온,candidate
-GLUTATHIONE,naver,2022-08,2022-04,2017-12,False,False,글루타치온,candidate
-GLUTATHIONE,pubmed,2020-06,2019-06,2016-12,False,False,글루타치온,candidate
-HEARTLEAF,kipris_cosmetic,2014-10,2014-10,2011-12,False,False,어성초,candidate
+FUCOXANTHIN,pubmed,2019-07,2015-12,2016-12,False,True,푸코잔틴(미역·다시마),candidate
+GLUTATHIONE,kipris_cosmetic,2022-11,2022-03,2011-12,False,False,글루타치온,candidate
+GLUTATHIONE,naver,2022-08,2022-03,2017-12,False,False,글루타치온,candidate
+GLUTATHIONE,pubmed,2020-06,2019-12,2016-12,False,False,글루타치온,candidate
+HEARTLEAF,kipris_cosmetic,2014-10,2013-05,2011-12,False,False,어성초,candidate
 HEARTLEAF,naver,,,2017-12,False,False,어성초,candidate
-HEARTLEAF,pubmed,2019-08,,2016-12,False,True,어성초,candidate
-HYALURONIC,kipris_cosmetic,2014-09,2010-12,2011-12,False,False,히알루론산(앵커),anchor
+HEARTLEAF,pubmed,2019-08,2018-01,2016-12,False,True,어성초,candidate
+HYALURONIC,kipris_cosmetic,2014-09,2024-04,2011-12,False,False,히알루론산(앵커),anchor
 HYALURONIC,naver,2017-12,2016-12,2017-12,True,False,히알루론산(앵커),anchor
-HYALURONIC,pubmed,2020-01,,2016-12,False,False,히알루론산(앵커),anchor
-MICROBIOME,kipris_cosmetic,2016-12,2013-11,2011-12,False,False,마이크로바이옴·발효,candidate
-MICROBIOME,naver,2025-10,2024-11,2017-12,False,False,마이크로바이옴·발효,candidate
-MICROBIOME,pubmed,2025-07,2024-06,2016-12,False,False,마이크로바이옴·발효,candidate
+HYALURONIC,pubmed,2020-01,2019-02,2016-12,False,False,히알루론산(앵커),anchor
+MICROBIOME,kipris_cosmetic,2016-12,2014-03,2011-12,False,False,마이크로바이옴·발효,candidate
+MICROBIOME,naver,2025-10,,2017-12,False,False,마이크로바이옴·발효,candidate
+MICROBIOME,pubmed,2025-07,2017-03,2016-12,False,False,마이크로바이옴·발효,candidate
 MUGWORT,kipris_cosmetic,2019-04,,2011-12,False,False,쑥,candidate
-MUGWORT,naver,2018-08,2018-04,2017-12,False,False,쑥,candidate
+MUGWORT,naver,2018-08,2018-02,2017-12,False,False,쑥,candidate
 MUGWORT,pubmed,2020-07,2015-12,2016-12,False,True,쑥,candidate
-NIACINAMIDE,kipris_cosmetic,2016-01,2014-12,2011-12,False,False,나이아신아마이드,train
-NIACINAMIDE,naver,2023-01,2022-11,2017-12,False,False,나이아신아마이드,train
+NIACINAMIDE,kipris_cosmetic,2016-01,2015-07,2011-12,False,False,나이아신아마이드,train
+NIACINAMIDE,naver,2023-01,2022-12,2017-12,False,False,나이아신아마이드,train
 NIACINAMIDE,pubmed,2024-04,,2016-12,False,False,나이아신아마이드,train
-PDRN,kipris_cosmetic,2023-03,2019-03,2011-12,False,False,PDRN,train
-PDRN,naver,2022-08,2022-06,2017-12,False,False,PDRN,train
-PDRN,pubmed,2025-02,2021-03,2016-12,False,False,PDRN,train
-PEPTIDE,kipris_cosmetic,2020-11,2013-12,2011-12,False,False,펩타이드(바르는 보톡스),candidate
+PDRN,kipris_cosmetic,2023-03,2022-06,2011-12,False,False,PDRN,train
+PDRN,naver,2022-08,2023-09,2017-12,False,False,PDRN,train
+PDRN,pubmed,2025-02,2022-02,2016-12,False,False,PDRN,train
+PEPTIDE,kipris_cosmetic,2020-11,2013-08,2011-12,False,False,펩타이드(바르는 보톡스),candidate
 PEPTIDE,naver,2022-11,,2017-12,False,False,펩타이드(바르는 보톡스),candidate
-PEPTIDE,pubmed,2024-10,2022-08,2016-12,False,False,펩타이드(바르는 보톡스),candidate
-PLANT_PDRN,kipris_cosmetic,2023-03,2022-10,2011-12,False,False,식물성 PDRN,candidate
-PLANT_PDRN,naver,2024-05,2023-03,2017-12,False,True,식물성 PDRN,candidate
-PLANT_PDRN,pubmed,2025-11,2025-11,2016-12,False,True,식물성 PDRN,candidate
-RECOMB_COLLAGEN,kipris_cosmetic,2022-01,2015-09,2011-12,False,True,재조합 콜라겐,candidate
-RECOMB_COLLAGEN,naver,2022-12,2023-06,2017-12,False,True,재조합 콜라겐,candidate
-RECOMB_COLLAGEN,pubmed,2024-02,2021-12,2016-12,False,False,재조합 콜라겐,candidate
-RETINOL,kipris_cosmetic,2019-02,2018-09,2011-12,False,False,레티놀,train
-RETINOL,naver,2022-07,2021-08,2017-12,False,False,레티놀,train
-RETINOL,pubmed,2019-08,,2016-12,False,False,레티놀,train
+PEPTIDE,pubmed,2024-10,2023-01,2016-12,False,False,펩타이드(바르는 보톡스),candidate
+PLANT_PDRN,kipris_cosmetic,2023-03,2021-10,2011-12,False,False,식물성 PDRN,candidate
+PLANT_PDRN,naver,2024-05,2022-12,2017-12,False,True,식물성 PDRN,candidate
+PLANT_PDRN,pubmed,2025-11,2025-04,2016-12,False,True,식물성 PDRN,candidate
+RECOMB_COLLAGEN,kipris_cosmetic,2022-01,2021-09,2011-12,False,True,재조합 콜라겐,candidate
+RECOMB_COLLAGEN,naver,2022-12,2022-01,2017-12,False,True,재조합 콜라겐,candidate
+RECOMB_COLLAGEN,pubmed,2024-02,2023-09,2016-12,False,False,재조합 콜라겐,candidate
+RETINOL,kipris_cosmetic,2019-02,2018-06,2011-12,False,False,레티놀,train
+RETINOL,naver,2022-07,2019-07,2017-12,False,False,레티놀,train
+RETINOL,pubmed,2019-08,2018-11,2016-12,False,False,레티놀,train
 RICE,kipris_cosmetic,2011-12,2010-12,2011-12,True,False,쌀(K-곡물),candidate
-RICE,naver,2024-12,2023-10,2017-12,False,True,쌀(K-곡물),candidate
-RICE,pubmed,2022-05,2017-12,2016-12,False,False,쌀(K-곡물),candidate
-SPICULE,kipris_cosmetic,2023-09,,2011-12,False,False,스피큘,candidate
-SPICULE,naver,2022-06,2022-04,2017-12,False,False,스피큘,candidate
-SPICULE,pubmed,2023-06,2023-06,2016-12,False,True,스피큘,candidate
-TRANEXAMIC,kipris_cosmetic,2022-07,2018-12,2011-12,False,True,트라넥삼산,candidate
+RICE,naver,2024-12,2024-03,2017-12,False,True,쌀(K-곡물),candidate
+RICE,pubmed,2022-05,2017-08,2016-12,False,False,쌀(K-곡물),candidate
+SPICULE,kipris_cosmetic,2023-09,2023-04,2011-12,False,False,스피큘,candidate
+SPICULE,naver,2022-06,2021-10,2017-12,False,False,스피큘,candidate
+SPICULE,pubmed,2023-06,2024-02,2016-12,False,True,스피큘,candidate
+TRANEXAMIC,kipris_cosmetic,2022-07,2015-03,2011-12,False,True,트라넥삼산,candidate
 TRANEXAMIC,naver,2023-03,2023-10,2017-12,False,False,트라넥삼산,candidate
-TRANEXAMIC,pubmed,2020-04,2018-05,2016-12,False,False,트라넥삼산,candidate
+TRANEXAMIC,pubmed,2020-04,2018-10,2016-12,False,False,트라넥삼산,candidate
