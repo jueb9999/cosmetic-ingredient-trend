@@ -5,3 +5,6 @@ __pycache__/
 data/raw/pubmed_progress.csv
 .DS_Store
 config/keywords_backup.csv
+data/raw/kipris_cache/
+data/raw/kipris_items_*.csv
+data/review/kipris_review_*.csv
